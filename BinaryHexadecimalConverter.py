@@ -1,4 +1,3 @@
-
 def main():
     #Function to act as a switch case for the selection that the user makes
     def choice(selection):
@@ -54,34 +53,51 @@ def main():
     def DenToBin():
         print("Converting number from Denary to Binary")
         number = input("Enter the number you want to convert : ")
-        if validInput("Denary",number):
+        if validInput("denary",number):
             print("Valid Denary Number")
         return checkContinue()
 
     #Function to convert Binary numbers to Denary
     def BinToDen():
         print("Converting number from Binary to Denary")
-        return True
+        return checkContinue()
 
     #Function to convert Denary numbers to Hexadecimal
     def DenToHex():
         print("Converting number from Denary to Hexadecimal")
-        return True
+        return checkContinue()
 
     #Function to convert Hexadecimal numbers to Denary
     def HexToDen():
         print("Converting number from Hexadecimal to Denary")
-        return True
+        number = input("Enter the number you want to convert : ").upper()
+        if validInput("hex",number):
+            hexValues = {"A" : 10, "B" : 11, "C" : 12, "D" : 13, "E" : 14, "F" : 15}
+            index = len(number) - 1 #Setting up the pointer for the number
+            total = 0
+            #Looping through every digit
+            for digit in number : 
+                #Translating string to an int
+                try : 
+                    digit = int(digit)
+                except :
+                    digit = hexValues.get(digit)
+
+                #Updating total and index
+                total += digit * 16**index
+                index -= 1
+            print(number + " in Denary is " + str(total))
+        return checkContinue()
 
     #Function to convert Binary numbers to Hexadecimal
     def BinToHex():
         print("Converting number from Binary to Hexadecimal")
-        return True
+        return checkContinue()
 
     #Function to convert Hexadecimal numbers to Binary
     def HexToBin():
         print("Converting number from Hexadecimal to Binary")
-        return True
+        return checkContinue()
 
     check = True
     #Allowing the user to be able to do this multiple times
