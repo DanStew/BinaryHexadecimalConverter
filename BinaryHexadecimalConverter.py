@@ -60,6 +60,15 @@ def main():
     #Function to convert Binary numbers to Denary
     def BinToDen():
         print("Converting number from Binary to Denary")
+        number = input("Enter the number you want to convert : ")
+        if validInput("binary",number):
+            index = len(number)-1 #Setting up the pointer for the number
+            total = 0
+            #Looping through each number and multiplying by 2**index
+            for digit in number :
+                total += int(digit) * 2**index
+                index -= 1
+            print(number + " in Denary is : " + str(total))
         return checkContinue()
 
     #Function to convert Denary numbers to Hexadecimal
