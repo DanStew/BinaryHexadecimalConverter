@@ -18,11 +18,45 @@ def main():
         except : 
             print("Invalid Input Enterred")
             return True #Returning True incase invalid is accidental
+        
+    #Function to check whether a number is valid, depending on what type it is supposed to be
+    #Function to ensure number input is valid for number type chosen
+    def validInput(choice,number):
+        if choice == "hex":
+            hex = {"0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"}
+            for digit in number:
+                if digit not in hex:
+                    print("Invalid Hexadecimal Number")
+                    return False
+        elif choice == "binary":
+            binary = {"0","1"}
+            for digit in number:
+                if digit not in binary:
+                    print("Invalid Binary Number")
+                    return False
+        else:
+            denary = {"0","1","2","3","4","5","6","7","8","9"}
+            for digit in number:
+                if digit not in denary:
+                    print("Invalid Denary Number")
+                    return False
+        return True
+    
+    #Function to see whether the user wants to continue
+    def checkContinue():
+        check = input("Would you like to continue? (Yes,No) : ").lower()
+        if check == "yes":
+            return True
+        else:
+            return False
     
     #Function to convert Denary numbers to Binary
     def DenToBin():
         print("Converting number from Denary to Binary")
-        return True
+        number = input("Enter the number you want to convert : ")
+        if validInput("Denary",number):
+            print("Valid Denary Number")
+        return checkContinue()
 
     #Function to convert Binary numbers to Denary
     def BinToDen():
@@ -64,6 +98,7 @@ def main():
         print("Enter Quit to Leave")
         print()
         selection = input("Please select your input : ").lower()
+        print()
 
         #Checking to see if the user wants to leave
         if selection == "quit":
@@ -71,7 +106,6 @@ def main():
 
         #Calling the function related to the option selected
         check = choice(selection)
-        print(check)
 
 main()
 
