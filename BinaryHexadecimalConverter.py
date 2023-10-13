@@ -39,6 +39,7 @@ def main():
                 if digit not in denary:
                     print("Invalid Denary Number")
                     return False
+                
         return True
     
     #Function to see whether the user wants to continue
@@ -54,7 +55,24 @@ def main():
         print("Converting number from Denary to Binary")
         number = input("Enter the number you want to convert : ")
         if validInput("denary",number):
-            print("Valid Denary Number")
+            number = int(number)
+            #Finding the most significant binary number
+            mostSignificant = 1
+            index = 0
+            while number >= mostSignificant*2:
+                mostSignificant *=2
+                index += 1
+            #Finding the output binary number
+            output = ""
+            outputNumber = number #Creating a copy of the number variable to use later
+            for i in range(index+1):
+                if number - 2**index >= 0:
+                    output += "1"
+                    number -= 2**index
+                else:
+                    output += "0"
+                index -= 1
+            print(str(outputNumber) + " in binary is : "  + output)
         return checkContinue()
 
     #Function to convert Binary numbers to Denary
@@ -62,6 +80,7 @@ def main():
         print("Converting number from Binary to Denary")
         number = input("Enter the number you want to convert : ")
         if validInput("binary",number):
+            print("Valid Input")
             index = len(number)-1 #Setting up the pointer for the number
             total = 0
             #Looping through each number and multiplying by 2**index
