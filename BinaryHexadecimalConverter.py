@@ -80,7 +80,6 @@ def main():
         print("Converting number from Binary to Denary")
         number = input("Enter the number you want to convert : ")
         if validInput("binary",number):
-            print("Valid Input")
             index = len(number)-1 #Setting up the pointer for the number
             total = 0
             #Looping through each number and multiplying by 2**index
@@ -93,6 +92,10 @@ def main():
     #Function to convert Denary numbers to Hexadecimal
     def DenToHex():
         print("Converting number from Denary to Hexadecimal")
+        number = input("Enter the number you want to convert : ")
+        if validInput("denary",number):
+            number = int(number)
+            
         return checkContinue()
 
     #Function to convert Hexadecimal numbers to Denary
