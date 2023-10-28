@@ -95,7 +95,31 @@ def main():
         number = input("Enter the number you want to convert : ")
         if validInput("denary",number):
             number = int(number)
-            
+            #Finding most significant value
+            mostSignificant = 1
+            index = 0
+            while number >= mostSignificant*16:
+                mostSignificant *= 16
+                index += 1
+            #Finding out the output hexadecimal number
+            output=""
+            #Defining all of the hex values (That aren't integers)
+            hexNumbers = {10:"A", 11:"B", 12:"C",13:"D",14:"E",15:"F"}
+            #Looping through all of the indexes
+            for i in range(index,-1,-1):
+                #Skipping the index if a number has already been accounted for
+                #Looping through all possible hex values
+                for j in range(15,-1,-1):
+                    #Taking away the highest number possible
+                    if number - j*16**i >= 0:
+                        number -= j*16**i
+                        #Adding the number taken away to the string
+                        if j <10:
+                            output += str(j)
+                        else:
+                            output += hexNumbers.get(j)
+                        break
+            print(output)    
         return checkContinue()
 
     #Function to convert Hexadecimal numbers to Denary
