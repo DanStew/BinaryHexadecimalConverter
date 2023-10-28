@@ -147,6 +147,33 @@ def main():
     #Function to convert Binary numbers to Hexadecimal
     def BinToHex():
         print("Converting number from Binary to Hexadecimal")
+        number = input("Enter the number you want to convert : ")
+        if validInput("binary",number):
+            #Making the number a group of 4
+            while len(number) % 4 != 0:
+                number = "0" + number
+            #Making an array of the different sublists
+            binSublist = []
+            for i in range(0,len(number),4):
+                binSublist.append(number[i:i+4])
+            #Working out the output for this number
+            output=""
+            #Working out the value of each sublist
+            #Looping through each sublist
+            for subList in binSublist:
+                subValue = 0
+                #Looping through each index and item in the sublists
+                for i,item in enumerate(subList):
+                    #Working out the subLists value
+                    #len(subList)-1-i is used to loop through the subList indexes backwards
+                    subValue += int(item) * 2**(len(subList)-1-i)
+                #Working out the hex value of the subvalue
+                if subValue < 10:
+                    output += str(subValue)
+                else:
+                    hexValues = {10:"A", 11:"B", 12:"C", 13:"D", 14:"E", 15:"F"}
+                    output += hexValues.get(subValue)
+            print(number + " in Hexadecimal is " + output)
         return checkContinue()
 
     #Function to convert Hexadecimal numbers to Binary
