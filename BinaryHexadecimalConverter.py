@@ -178,7 +178,30 @@ def main():
 
     #Function to convert Hexadecimal numbers to Binary
     def HexToBin():
+        #Function implemented to remove 0s from the front of the Hex Numbers
+        def stripZeros(string):
+            for char in string:
+                if char == "1":
+                   break
+                string = string[1:]
+            return string
+
+        #Main Function Code
         print("Converting number from Hexadecimal to Binary")
+        number = input("Enter the number you would like to convert : ").upper()
+        if validInput("hex",number):
+            #Defining the conversions from a hex number to a binary number
+            hexConversion = {"0":"0000", "1":"0001", "2":"0010", "3":"0011", 
+                        "4":"0100", "5":"0101", "6":"0110", "7":"0111", 
+                        "8":"1000", "9":"1001", "A":"1010", "B":"1011", 
+                        "C":"1100", "D":"1101", "E":"1110", "F":"1111"}
+            #Working out the output
+            output = ""
+            for char in number : 
+                output += hexConversion.get(char)
+            #Stripping the 0s from the front of the binary number
+            output = stripZeros(output)
+            print(number + " in Binary is " + output)
         return checkContinue()
 
     check = True
